@@ -128,7 +128,7 @@ CHIP ALU32 {
     FullAdder(a=xi30, b=yi30, c=c30,   sum=sum30, carry=c31);
     FullAdder(a=xi31, b=yi31, c=c31,   sum=sum31, carry=c32);
 
-    // ---- Selección por f, luego posible negación por no; todo sin Mux16
+    // ---- Selección de la operacion por f, luego posible negación por no; todo sin Mux16
     And(a=and0,  b=nf, out=s0a);   And(a=sum0,  b=f, out=s0b);   Or(a=s0a,  b=s0b,  out=p0);   Xor(a=p0,  b=no, out=out[0]);
     And(a=and1,  b=nf, out=s1a);   And(a=sum1,  b=f, out=s1b);   Or(a=s1a,  b=s1b,  out=p1);   Xor(a=p1,  b=no, out=out[1]);
     And(a=and2,  b=nf, out=s2a);   And(a=sum2,  b=f, out=s2b);   Or(a=s2a,  b=s2b,  out=p2);   Xor(a=p2,  b=no, out=out[2]);
