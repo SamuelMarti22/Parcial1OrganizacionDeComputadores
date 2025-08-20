@@ -1,0 +1,33 @@
+CHIP ALU16MOD {
+    IN  
+        x[16], y[16],  // 16-bit inputs        
+        zx, // zero the x input?
+        nx, // negate the x input?
+        zy, // zero the y input?
+        ny, // negate the y input?
+        f,  // compute (out = x + y) or (out = x & y)?
+        no, // negate the out output?
+        carry;
+    OUT 
+        out[16], // 16-bit output
+        zr,      // if (out == 0) equals 1, else 0
+        ng,      // if (out < 0)  equals 1, else 0
+        overflow;
+
+    PARTS:
+        Mux16(a= x, b= false, sel=zx , out= x1);
+        Not16(in= x1, out=Nx1 );
+        Mux16(a= y, b= false, sel= zy, out= y1);
+        Not16(in= y1, out=Ny1 );
+        Mux16(a= x1, b= Nx1, sel= nx, out= x2);
+        Mux16(a= y1, b= Ny1, sel= ny, out= y2);
+        And16(a= x2, b= y2, out= xANDy);
+        AdderCarry16(a = x2, b = y2, carryInicial=carry, out = xPLUSy, carryOut=overflow);
+        Mux16(a= xANDy, b= xPLUSy, sel= f, out= preOut);
+        Not16(in= preOut, out= Nout);
+        Mux16(a= preOut, b= Nout, sel= no, out= out, out[15]=ng, out[0..7]=outLow, out[8..15]=outHigh);
+        Or8Way(in= outLow, out= outL);
+        Or8Way(in= outHigh, out= outH);
+        Or(a= outL, b= outH, out= outRes);
+        Not(in= outRes, out= zr);
+}

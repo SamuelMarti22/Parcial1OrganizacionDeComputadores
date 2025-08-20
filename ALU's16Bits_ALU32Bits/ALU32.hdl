@@ -1,0 +1,9 @@
+CHIP ALU32{
+    IN x1[16], x2[16],y1[16],y2[16], nx, ny, zx, zy, f, no;
+    OUT out1[16], out2[16], zr, ng, overflow;
+    
+    PARTS:
+        ALU16MOD(x=x1,y=y1,zx=zx,nx=nx,zy=zy,ny=ny,f=f,no=no,carry=false,out=out1,zr=zr1,ng = ng1,overflow=carry1);
+        ALU16MOD(x=x2,y=y2,zx=zx,nx=nx,zy=zy,ny=ny,f=f,no=no,carry=carry1,out=out2,zr=zr2,out[15] = ng,overflow=overflow);
+        And(a=zr1,b=zr2,out=zr);
+}
