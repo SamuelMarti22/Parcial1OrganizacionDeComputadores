@@ -59,9 +59,12 @@ La ALU32 recibe dos entradas de 32 bits (`x` y `y`) y seis bits de control (`zx,
 
 ## Prueba en Nand2Tetris
 <img width="1357" height="766" alt="image" src="https://github.com/user-attachments/assets/71a85d9c-88a6-40d1-8d31-a3c7b53f6bf1" />
+
 ---
+
 ## ALU 32 Bits a partir de 2 ALU's 16
-<img width="1025" height="941" alt="imagen" src="https://github.com/user-attachments/assets/7a0b3057-8850-4a61-885f-f864083b2a18" />
+<img width="859" height="836" alt="imagen" src="https://github.com/user-attachments/assets/ba3886c1-357f-4238-ad00-ed6cab2f55d4" />
+
 
 ## Descripción
 
