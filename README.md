@@ -76,7 +76,8 @@ La ALU32 recibe dos entradas de 32 bits (`x` y `y`) y seis bits de control (`zx,
 - `ng`: indica si la salida es negativa en representación de complemento a dos.  
 - `ov`: indica si ocurrió un desbordamiento aritmético (overflow) en la operación de suma.
 ## Prueba en Nand2Tetris
-![Uploading imagen.png…]()
+<img width="494" height="718" alt="imagen" src="https://github.com/user-attachments/assets/b0a5115c-da70-4b04-a72d-47f995532659" />
+
 
 ---
 
