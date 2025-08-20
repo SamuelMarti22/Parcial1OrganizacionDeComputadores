@@ -1,6 +1,6 @@
 CHIP AdderCarry16{
     IN a[16], b[16], carryInicial;
-    OUT out[16],carryOut;
+    OUT out[16],carryOut, carryIn;
 
 
     PARTS:
@@ -18,6 +18,6 @@ CHIP AdderCarry16{
         FullAdder(a=a[11], b=b[11] , c=c10 , sum=out[11] , carry=c11 );
         FullAdder(a=a[12], b=b[12] , c=c11 , sum=out[12] , carry=c12 );
         FullAdder(a=a[13], b=b[13] , c=c12 , sum=out[13] , carry=c13 );
-        FullAdder(a=a[14], b=b[14] , c=c13 , sum=out[14] , carry=c14 );
+        FullAdder(a=a[14], b=b[14] , c=c13 , sum=out[14] , carry=carryIn, carry=c14 );
         FullAdder(a=a[15], b=b[15] , c=c14 , sum=out[15] , carry=carryOut );
 }
