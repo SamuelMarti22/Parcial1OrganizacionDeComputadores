@@ -57,6 +57,23 @@ La ALU32 recibe dos entradas de 32 bits (`x` y `y`) y seis bits de control (`zx,
 - `ng`: indica si la salida es negativa en representación de complemento a dos.  
 - `ov`: indica si ocurrió un desbordamiento aritmético (overflow) en la operación de suma.
 
+## Prueba en Nand2Tetris
+<img width="1357" height="766" alt="image" src="https://github.com/user-attachments/assets/71a85d9c-88a6-40d1-8d31-a3c7b53f6bf1" />
+---
+## ALU 32 Bits a partir de 2 ALU's 16
+<img width="1672" height="695" alt="image" src="https://github.com/user-attachments/assets/a803d650-bc1c-400f-8d1c-c1015fab7c42" />
+
+## Descripción
+
+La ALU32 (Unidad Aritmético-Lógica de 32 bits) es un circuito digital que realiza operaciones aritméticas y lógicas sobre dos operandos de 32 bits.  
+En este proyecto se implementó la ALU32 en el entorno Nand2Tetris a partir de dos ALU16 conectadas en cascada y el uso de multiplexores para la selección de operaciones.
+
+La ALU32 recibe dos entradas de 32 bits (`x` y `y`) y seis bits de control (`zx, nx, zy, ny, f, no`). Su salida corresponde a un bus de 32 bits (`out`) acompañado de tres banderas de estado:  
+- `zr`: indica si la salida es cero.  
+- `ng`: indica si la salida es negativa en representación de complemento a dos.  
+- `ov`: indica si ocurrió un desbordamiento aritmético (overflow) en la operación de suma.
+## Prueba en Nand2Tetris
+<img width="1357" height="766" alt="image" src="https://github.com/user-attachments/assets/71a85d9c-88a6-40d1-8d31-a3c7b53f6bf1" />
 ---
 
 ## Funcionamiento
@@ -140,6 +157,5 @@ La siguiente tabla resume algunas combinaciones de los bits de control y la oper
    ```
    End of script - Comparison ended successfully
    ```
-## Prueba en Nand2Tetris
-<img width="1357" height="766" alt="image" src="https://github.com/user-attachments/assets/71a85d9c-88a6-40d1-8d31-a3c7b53f6bf1" />
+
 
