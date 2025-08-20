@@ -61,19 +61,20 @@ La ALU32 recibe dos entradas de 32 bits (`x` y `y`) y seis bits de control (`zx,
 <img width="1357" height="766" alt="image" src="https://github.com/user-attachments/assets/71a85d9c-88a6-40d1-8d31-a3c7b53f6bf1" />
 ---
 ## ALU 32 Bits a partir de 2 ALU's 16
-<img width="1672" height="695" alt="image" src="https://github.com/user-attachments/assets/a803d650-bc1c-400f-8d1c-c1015fab7c42" />
+<img width="1025" height="941" alt="imagen" src="https://github.com/user-attachments/assets/7a0b3057-8850-4a61-885f-f864083b2a18" />
 
 ## Descripción
 
 La ALU32 (Unidad Aritmético-Lógica de 32 bits) es un circuito digital que realiza operaciones aritméticas y lógicas sobre dos operandos de 32 bits.  
-En este proyecto se implementó la ALU32 en el entorno Nand2Tetris a partir de dos ALU16 conectadas en cascada y el uso de multiplexores para la selección de operaciones.
+En esta parte del pryoecto se implementaron 2 ALU de 16, "unídas", pero para esto se hicieron algunas modificaciones. Primero creamos un Add16, con la difernecia que el primer adder fuera un fulladder, esto con el proposito de recoger un carry desde el primer adder, así pudiendo transmitir información de una carry a otra; y claramente haciendo que la ALU también devuelva el carry del último adder, para pasarle información a la otra ALU, o para saber si hubo overflow. Después, para evaluar el zr, unimos ambos pines con un and, y ya tendríamos el zr real.
 
 La ALU32 recibe dos entradas de 32 bits (`x` y `y`) y seis bits de control (`zx, nx, zy, ny, f, no`). Su salida corresponde a un bus de 32 bits (`out`) acompañado de tres banderas de estado:  
 - `zr`: indica si la salida es cero.  
 - `ng`: indica si la salida es negativa en representación de complemento a dos.  
 - `ov`: indica si ocurrió un desbordamiento aritmético (overflow) en la operación de suma.
 ## Prueba en Nand2Tetris
-<img width="1357" height="766" alt="image" src="https://github.com/user-attachments/assets/71a85d9c-88a6-40d1-8d31-a3c7b53f6bf1" />
+![Uploading imagen.png…]()
+
 ---
 
 ## Funcionamiento
