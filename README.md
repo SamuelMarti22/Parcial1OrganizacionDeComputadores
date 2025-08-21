@@ -162,5 +162,11 @@ La siguiente tabla resume algunas combinaciones de los bits de control y la oper
    ```
    End of script - Comparison ended successfully
    ```
+- - -
+## Video Explicativo 
+En el siguiente link encontrará un video explicativo sobre la realización de la ALU32 Monolitica y la ALU32 con 2 ALU's16. <br>
+https://drive.google.com/file/d/1da-43T9mPk6kTjW-rXjU_mefzCa5jxeK/view?usp=sharing 
 
-
+ - - -
+## Pensamiento Critico
+En el repositorio se encuentra el archivo "Pensamiento critico" con las respuestas respectivas. 
