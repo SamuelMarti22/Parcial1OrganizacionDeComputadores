@@ -1,0 +1,28 @@
+
+CHIP ALU16Slice {
+    IN  x[16], y[16], zx, nx, zy, ny, f, no, cin;
+    OUT out[16], cout;
+
+    PARTS:
+ 
+    Mux16(a=x, b[0..15]=false, sel=zx, out=xz);
+    Mux16(a=y, b[0..15]=false, sel=zy, out=yz);
+
+    
+    Not16(in=xz, out=xn);
+    Mux16(a=xz, b=xn, sel=nx, out=xi);
+    Not16(in=yz, out=yn);
+    Mux16(a=yz, b=yn, sel=ny, out=yi);
+ 
+ 
+    And16(a=xi, b=yi, out=andRes);
+    Add16c(a=xi, b=yi, cin=cin, out=sumRes, cout=coutAdd);
+
+    
+    Mux16(a=andRes, b=sumRes, sel=f,  out=pre);
+    Not16(in=pre, out=preN);
+    Mux16(a=pre,   b=preN,    sel=no, out=out);
+
+     
+    Mux(a=false, b=coutAdd, sel=f, out=cout);
+}

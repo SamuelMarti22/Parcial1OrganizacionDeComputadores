@@ -1,0 +1,167 @@
+CHIP ALU32 {
+    IN  x[32], y[32], zx, nx, zy, ny, f, no;
+    OUT out[32], cout;
+
+    PARTS:
+    // ---- Controles negados (escalar)
+    Not(in=zx, out=nzx);
+    Not(in=zy, out=nzy);
+    Not(in=f,  out=nf);
+
+    // ---- Zeroing por AND con ~z*
+    And(a=x[0],  b=nzx, out=xz0);   And(a=y[0],  b=nzy, out=yz0);
+    And(a=x[1],  b=nzx, out=xz1);   And(a=y[1],  b=nzy, out=yz1);
+    And(a=x[2],  b=nzx, out=xz2);   And(a=y[2],  b=nzy, out=yz2);
+    And(a=x[3],  b=nzx, out=xz3);   And(a=y[3],  b=nzy, out=yz3);
+    And(a=x[4],  b=nzx, out=xz4);   And(a=y[4],  b=nzy, out=yz4);
+    And(a=x[5],  b=nzx, out=xz5);   And(a=y[5],  b=nzy, out=yz5);
+    And(a=x[6],  b=nzx, out=xz6);   And(a=y[6],  b=nzy, out=yz6);
+    And(a=x[7],  b=nzx, out=xz7);   And(a=y[7],  b=nzy, out=yz7);
+    And(a=x[8],  b=nzx, out=xz8);   And(a=y[8],  b=nzy, out=yz8);
+    And(a=x[9],  b=nzx, out=xz9);   And(a=y[9],  b=nzy, out=yz9);
+    And(a=x[10], b=nzx, out=xz10);  And(a=y[10], b=nzy, out=yz10);
+    And(a=x[11], b=nzx, out=xz11);  And(a=y[11], b=nzy, out=yz11);
+    And(a=x[12], b=nzx, out=xz12);  And(a=y[12], b=nzy, out=yz12);
+    And(a=x[13], b=nzx, out=xz13);  And(a=y[13], b=nzy, out=yz13);
+    And(a=x[14], b=nzx, out=xz14);  And(a=y[14], b=nzy, out=yz14);
+    And(a=x[15], b=nzx, out=xz15);  And(a=y[15], b=nzy, out=yz15);
+    And(a=x[16], b=nzx, out=xz16);  And(a=y[16], b=nzy, out=yz16);
+    And(a=x[17], b=nzx, out=xz17);  And(a=y[17], b=nzy, out=yz17);
+    And(a=x[18], b=nzx, out=xz18);  And(a=y[18], b=nzy, out=yz18);
+    And(a=x[19], b=nzx, out=xz19);  And(a=y[19], b=nzy, out=yz19);
+    And(a=x[20], b=nzx, out=xz20);  And(a=y[20], b=nzy, out=yz20);
+    And(a=x[21], b=nzx, out=xz21);  And(a=y[21], b=nzy, out=yz21);
+    And(a=x[22], b=nzx, out=xz22);  And(a=y[22], b=nzy, out=yz22);
+    And(a=x[23], b=nzx, out=xz23);  And(a=y[23], b=nzy, out=yz23);
+    And(a=x[24], b=nzx, out=xz24);  And(a=y[24], b=nzy, out=yz24);
+    And(a=x[25], b=nzx, out=xz25);  And(a=y[25], b=nzy, out=yz25);
+    And(a=x[26], b=nzx, out=xz26);  And(a=y[26], b=nzy, out=yz26);
+    And(a=x[27], b=nzx, out=xz27);  And(a=y[27], b=nzy, out=yz27);
+    And(a=x[28], b=nzx, out=xz28);  And(a=y[28], b=nzy, out=yz28);
+    And(a=x[29], b=nzx, out=xz29);  And(a=y[29], b=nzy, out=yz29);
+    And(a=x[30], b=nzx, out=xz30);  And(a=y[30], b=nzy, out=yz30);
+    And(a=x[31], b=nzx, out=xz31);  And(a=y[31], b=nzy, out=yz31);
+
+    // ---- Posibles negaciones (XOR con nx/ny, escalar)
+    Xor(a=xz0,  b=nx, out=xi0);   Xor(a=yz0,  b=ny, out=yi0);
+    Xor(a=xz1,  b=nx, out=xi1);   Xor(a=yz1,  b=ny, out=yi1);
+    Xor(a=xz2,  b=nx, out=xi2);   Xor(a=yz2,  b=ny, out=yi2);
+    Xor(a=xz3,  b=nx, out=xi3);   Xor(a=yz3,  b=ny, out=yi3);
+    Xor(a=xz4,  b=nx, out=xi4);   Xor(a=yz4,  b=ny, out=yi4);
+    Xor(a=xz5,  b=nx, out=xi5);   Xor(a=yz5,  b=ny, out=yi5);
+    Xor(a=xz6,  b=nx, out=xi6);   Xor(a=yz6,  b=ny, out=yi6);
+    Xor(a=xz7,  b=nx, out=xi7);   Xor(a=yz7,  b=ny, out=yi7);
+    Xor(a=xz8,  b=nx, out=xi8);   Xor(a=yz8,  b=ny, out=yi8);
+    Xor(a=xz9,  b=nx, out=xi9);   Xor(a=yz9,  b=ny, out=yi9);
+    Xor(a=xz10, b=nx, out=xi10);  Xor(a=yz10, b=ny, out=yi10);
+    Xor(a=xz11, b=nx, out=xi11);  Xor(a=yz11, b=ny, out=yi11);
+    Xor(a=xz12, b=nx, out=xi12);  Xor(a=yz12, b=ny, out=yi12);
+    Xor(a=xz13, b=nx, out=xi13);  Xor(a=yz13, b=ny, out=yi13);
+    Xor(a=xz14, b=nx, out=xi14);  Xor(a=yz14, b=ny, out=yi14);
+    Xor(a=xz15, b=nx, out=xi15);  Xor(a=yz15, b=ny, out=yi15);
+    Xor(a=xz16, b=nx, out=xi16);  Xor(a=yz16, b=ny, out=yi16);
+    Xor(a=xz17, b=nx, out=xi17);  Xor(a=yz17, b=ny, out=yi17);
+    Xor(a=xz18, b=nx, out=xi18);  Xor(a=yz18, b=ny, out=yi18);
+    Xor(a=xz19, b=nx, out=xi19);  Xor(a=yz19, b=ny, out=yi19);
+    Xor(a=xz20, b=nx, out=xi20);  Xor(a=yz20, b=ny, out=yi20);
+    Xor(a=xz21, b=nx, out=xi21);  Xor(a=yz21, b=ny, out=yi21);
+    Xor(a=xz22, b=nx, out=xi22);  Xor(a=yz22, b=ny, out=yi22);
+    Xor(a=xz23, b=nx, out=xi23);  Xor(a=yz23, b=ny, out=yi23);
+    Xor(a=xz24, b=nx, out=xi24);  Xor(a=yz24, b=ny, out=yi24);
+    Xor(a=xz25, b=nx, out=xi25);  Xor(a=yz25, b=ny, out=yi25);
+    Xor(a=xz26, b=nx, out=xi26);  Xor(a=yz26, b=ny, out=yi26);
+    Xor(a=xz27, b=nx, out=xi27);  Xor(a=yz27, b=ny, out=yi27);
+    Xor(a=xz28, b=nx, out=xi28);  Xor(a=yz28, b=ny, out=yi28);
+    Xor(a=xz29, b=nx, out=xi29);  Xor(a=yz29, b=ny, out=yi29);
+    Xor(a=xz30, b=nx, out=xi30);  Xor(a=yz30, b=ny, out=yi30);
+    Xor(a=xz31, b=nx, out=xi31);  Xor(a=yz31, b=ny, out=yi31);
+
+    // ---- AND de datos ya preprocesados
+    And(a=xi0,  b=yi0,  out=and0);   And(a=xi16, b=yi16, out=and16);
+    And(a=xi1,  b=yi1,  out=and1);   And(a=xi17, b=yi17, out=and17);
+    And(a=xi2,  b=yi2,  out=and2);   And(a=xi18, b=yi18, out=and18);
+    And(a=xi3,  b=yi3,  out=and3);   And(a=xi19, b=yi19, out=and19);
+    And(a=xi4,  b=yi4,  out=and4);   And(a=xi20, b=yi20, out=and20);
+    And(a=xi5,  b=yi5,  out=and5);   And(a=xi21, b=yi21, out=and21);
+    And(a=xi6,  b=yi6,  out=and6);   And(a=xi22, b=yi22, out=and22);
+    And(a=xi7,  b=yi7,  out=and7);   And(a=xi23, b=yi23, out=and23);
+    And(a=xi8,  b=yi8,  out=and8);   And(a=xi24, b=yi24, out=and24);
+    And(a=xi9,  b=yi9,  out=and9);   And(a=xi25, b=yi25, out=and25);
+    And(a=xi10, b=yi10, out=and10);  And(a=xi26, b=yi26, out=and26);
+    And(a=xi11, b=yi11, out=and11);  And(a=xi27, b=yi27, out=and27);
+    And(a=xi12, b=yi12, out=and12);  And(a=xi28, b=yi28, out=and28);
+    And(a=xi13, b=yi13, out=and13);  And(a=xi29, b=yi29, out=and29);
+    And(a=xi14, b=yi14, out=and14);  And(a=xi30, b=yi30, out=and30);
+    And(a=xi15, b=yi15, out=and15);  And(a=xi31, b=yi31, out=and31);
+
+    // ---- SUMA (ripple) con cin=0, solo para seleccionar si f=1 (no exponemos cout)
+    FullAdder(a=xi0,  b=yi0,  c=false, sum=sum0,  carry=c1);
+    FullAdder(a=xi1,  b=yi1,  c=c1,    sum=sum1,  carry=c2);
+    FullAdder(a=xi2,  b=yi2,  c=c2,    sum=sum2,  carry=c3);
+    FullAdder(a=xi3,  b=yi3,  c=c3,    sum=sum3,  carry=c4);
+    FullAdder(a=xi4,  b=yi4,  c=c4,    sum=sum4,  carry=c5);
+    FullAdder(a=xi5,  b=yi5,  c=c5,    sum=sum5,  carry=c6);
+    FullAdder(a=xi6,  b=yi6,  c=c6,    sum=sum6,  carry=c7);
+    FullAdder(a=xi7,  b=yi7,  c=c7,    sum=sum7,  carry=c8);
+    FullAdder(a=xi8,  b=yi8,  c=c8,    sum=sum8,  carry=c9);
+    FullAdder(a=xi9,  b=yi9,  c=c9,    sum=sum9,  carry=c10);
+    FullAdder(a=xi10, b=yi10, c=c10,   sum=sum10, carry=c11);
+    FullAdder(a=xi11, b=yi11, c=c11,   sum=sum11, carry=c12);
+    FullAdder(a=xi12, b=yi12, c=c12,   sum=sum12, carry=c13);
+    FullAdder(a=xi13, b=yi13, c=c13,   sum=sum13, carry=c14);
+    FullAdder(a=xi14, b=yi14, c=c14,   sum=sum14, carry=c15);
+    FullAdder(a=xi15, b=yi15, c=c15,   sum=sum15, carry=c16);
+    FullAdder(a=xi16, b=yi16, c=c16,   sum=sum16, carry=c17);
+    FullAdder(a=xi17, b=yi17, c=c17,   sum=sum17, carry=c18);
+    FullAdder(a=xi18, b=yi18, c=c18,   sum=sum18, carry=c19);
+    FullAdder(a=xi19, b=yi19, c=c19,   sum=sum19, carry=c20);
+    FullAdder(a=xi20, b=yi20, c=c20,   sum=sum20, carry=c21);
+    FullAdder(a=xi21, b=yi21, c=c21,   sum=sum21, carry=c22);
+    FullAdder(a=xi22, b=yi22, c=c22,   sum=sum22, carry=c23);
+    FullAdder(a=xi23, b=yi23, c=c23,   sum=sum23, carry=c24);
+    FullAdder(a=xi24, b=yi24, c=c24,   sum=sum24, carry=c25);
+    FullAdder(a=xi25, b=yi25, c=c25,   sum=sum25, carry=c26);
+    FullAdder(a=xi26, b=yi26, c=c26,   sum=sum26, carry=c27);
+    FullAdder(a=xi27, b=yi27, c=c27,   sum=sum27, carry=c28);
+    FullAdder(a=xi28, b=yi28, c=c28,   sum=sum28, carry=c29);
+    FullAdder(a=xi29, b=yi29, c=c29,   sum=sum29, carry=c30);
+    FullAdder(a=xi30, b=yi30, c=c30,   sum=sum30, carry=c31);
+    FullAdder(a=xi31, b=yi31, c=c31,   sum=sum31, carry=c32);
+
+    // ---- Selección por f, luego posible negación por no; todo sin Mux16
+    And(a=and0,  b=nf, out=s0a);   And(a=sum0,  b=f, out=s0b);   Or(a=s0a,  b=s0b,  out=p0);   Xor(a=p0,  b=no, out=out[0]);
+    And(a=and1,  b=nf, out=s1a);   And(a=sum1,  b=f, out=s1b);   Or(a=s1a,  b=s1b,  out=p1);   Xor(a=p1,  b=no, out=out[1]);
+    And(a=and2,  b=nf, out=s2a);   And(a=sum2,  b=f, out=s2b);   Or(a=s2a,  b=s2b,  out=p2);   Xor(a=p2,  b=no, out=out[2]);
+    And(a=and3,  b=nf, out=s3a);   And(a=sum3,  b=f, out=s3b);   Or(a=s3a,  b=s3b,  out=p3);   Xor(a=p3,  b=no, out=out[3]);
+    And(a=and4,  b=nf, out=s4a);   And(a=sum4,  b=f, out=s4b);   Or(a=s4a,  b=s4b,  out=p4);   Xor(a=p4,  b=no, out=out[4]);
+    And(a=and5,  b=nf, out=s5a);   And(a=sum5,  b=f, out=s5b);   Or(a=s5a,  b=s5b,  out=p5);   Xor(a=p5,  b=no, out=out[5]);
+    And(a=and6,  b=nf, out=s6a);   And(a=sum6,  b=f, out=s6b);   Or(a=s6a,  b=s6b,  out=p6);   Xor(a=p6,  b=no, out=out[6]);
+    And(a=and7,  b=nf, out=s7a);   And(a=sum7,  b=f, out=s7b);   Or(a=s7a,  b=s7b,  out=p7);   Xor(a=p7,  b=no, out=out[7]);
+    And(a=and8,  b=nf, out=s8a);   And(a=sum8,  b=f, out=s8b);   Or(a=s8a,  b=s8b,  out=p8);   Xor(a=p8,  b=no, out=out[8]);
+    And(a=and9,  b=nf, out=s9a);   And(a=sum9,  b=f, out=s9b);   Or(a=s9a,  b=s9b,  out=p9);   Xor(a=p9,  b=no, out=out[9]);
+    And(a=and10, b=nf, out=s10a);  And(a=sum10, b=f, out=s10b);  Or(a=s10a, b=s10b, out=p10);  Xor(a=p10, b=no, out=out[10]);
+    And(a=and11, b=nf, out=s11a);  And(a=sum11, b=f, out=s11b);  Or(a=s11a, b=s11b, out=p11);  Xor(a=p11, b=no, out=out[11]);
+    And(a=and12, b=nf, out=s12a);  And(a=sum12, b=f, out=s12b);  Or(a=s12a, b=s12b, out=p12);  Xor(a=p12, b=no, out=out[12]);
+    And(a=and13, b=nf, out=s13a);  And(a=sum13, b=f, out=s13b);  Or(a=s13a, b=s13b, out=p13);  Xor(a=p13, b=no, out=out[13]);
+    And(a=and14, b=nf, out=s14a);  And(a=sum14, b=f, out=s14b);  Or(a=s14a, b=s14b, out=p14);  Xor(a=p14, b=no, out=out[14]);
+    And(a=and15, b=nf, out=s15a);  And(a=sum15, b=f, out=s15b);  Or(a=s15a, b=s15b, out=p15);  Xor(a=p15, b=no, out=out[15]);
+    And(a=and16, b=nf, out=s16a);  And(a=sum16, b=f, out=s16b);  Or(a=s16a, b=s16b, out=p16);  Xor(a=p16, b=no, out=out[16]);
+    And(a=and17, b=nf, out=s17a);  And(a=sum17, b=f, out=s17b);  Or(a=s17a, b=s17b, out=p17);  Xor(a=p17, b=no, out=out[17]);
+    And(a=and18, b=nf, out=s18a);  And(a=sum18, b=f, out=s18b);  Or(a=s18a, b=s18b, out=p18);  Xor(a=p18, b=no, out=out[18]);
+    And(a=and19, b=nf, out=s19a);  And(a=sum19, b=f, out=s19b);  Or(a=s19a, b=s19b, out=p19);  Xor(a=p19, b=no, out=out[19]);
+    And(a=and20, b=nf, out=s20a);  And(a=sum20, b=f, out=s20b);  Or(a=s20a, b=s20b, out=p20);  Xor(a=p20, b=no, out=out[20]);
+    And(a=and21, b=nf, out=s21a);  And(a=sum21, b=f, out=s21b);  Or(a=s21a, b=s21b, out=p21);  Xor(a=p21, b=no, out=out[21]);
+    And(a=and22, b=nf, out=s22a);  And(a=sum22, b=f, out=s22b);  Or(a=s22a, b=s22b, out=p22);  Xor(a=p22, b=no, out=out[22]);
+    And(a=and23, b=nf, out=s23a);  And(a=sum23, b=f, out=s23b);  Or(a=s23a, b=s23b, out=p23);  Xor(a=p23, b=no, out=out[23]);
+    And(a=and24, b=nf, out=s24a);  And(a=sum24, b=f, out=s24b);  Or(a=s24a, b=s24b, out=p24);  Xor(a=p24, b=no, out=out[24]);
+    And(a=and25, b=nf, out=s25a);  And(a=sum25, b=f, out=s25b);  Or(a=s25a, b=s25b, out=p25);  Xor(a=p25, b=no, out=out[25]);
+    And(a=and26, b=nf, out=s26a);  And(a=sum26, b=f, out=s26b);  Or(a=s26a, b=s26b, out=p26);  Xor(a=p26, b=no, out=out[26]);
+    And(a=and27, b=nf, out=s27a);  And(a=sum27, b=f, out=s27b);  Or(a=s27a, b=s27b, out=p27);  Xor(a=p27, b=no, out=out[27]);
+    And(a=and28, b=nf, out=s28a);  And(a=sum28, b=f, out=s28b);  Or(a=s28a, b=s28b, out=p28);  Xor(a=p28, b=no, out=out[28]);
+    And(a=and29, b=nf, out=s29a);  And(a=sum29, b=f, out=s29b);  Or(a=s29a, b=s29b, out=p29);  Xor(a=p29, b=no, out=out[29]);
+    And(a=and30, b=nf, out=s30a);  And(a=sum30, b=f, out=s30b);  Or(a=s30a, b=s30b, out=p30);  Xor(a=p30, b=no, out=out[30]);
+    And(a=and31, b=nf, out=s31a);  And(a=sum31, b=f, out=s31b);  Or(a=s31a, b=s31b, out=p31);  Xor(a=p31,  b=no, out=out[31]);
+
+    // ---- cout fijo en 0 (no usamos carry de salida)
+    Nand(a=true, b=true, out=cout);
+}
